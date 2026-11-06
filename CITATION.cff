@@ -1,0 +1,24 @@
+message: "If you use this software, please cite it using these metadata."
+authors:
+    - family-names: Lampert
+      given-names: Marcus
+      orcid: "https://orcid.org/0009-0008-1777-819X"
+    - family-names: Arndt
+      given-names: Nadine
+      orcid: "https://orcid.org/0000-0002-2257-7236"
+    - family-names: Fechner
+      given-names: Martin
+      orcid: "https://orcid.org/0000-0001-9233-0653"
+    - family-names: Wierzoch
+      given-names: Jan
+      orcid: "https://orcid.org/0000-0002-6388-4064"
+
+title: ediarum.platform
+abstract: "ediarum.platform is the single browser entry point for the ediarum services: it provides login, profile and a shared top menu, and mounts the frontends of ediarum apps such as ediarum.WEBDAV and ediarum.zotero at runtime."
+type: software
+date-released: "2026-11"
+version: 1.0.0
+repository-code: "https://github.com/ediarum/ediarum.platform"
+license: "GPL-3.0-or-later"
+url: "https://www.ediarum.org"
+cff-version: 1.2.0

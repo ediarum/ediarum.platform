@@ -1,0 +1,9 @@
+.git
+node_modules
+dist
+dev/mock-app/dist
+coverage
+*.tsbuildinfo
+.env*.local
+.env
+env

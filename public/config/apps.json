@@ -1,0 +1,23 @@
+[
+  {
+    "id": "zotero",
+    "label": "Zotero",
+    "entry": "/apps/zotero/embed.js",
+    "apiBase": "/api/zotero",
+    "roles": []
+  },
+  {
+    "id": "index",
+    "label": "Index",
+    "entry": "/apps/index/embed.js",
+    "apiBase": "/api/index",
+    "roles": []
+  },
+  {
+    "id": "webdav",
+    "label": "WebDAV",
+    "entry": "/apps/webdav/embed.js",
+    "apiBase": "/api/webdav",
+    "roles": ["admin"]
+  }
+]

@@ -1,0 +1,173 @@
+/*
+ * Global CSS of the platform. Mounted apps share this page, so keep this file minimal:
+ * design tokens (all prefixed --ep-), the height chain for the full-screen layout, and
+ * nothing else. Component styles live in scoped <style> blocks.
+ */
+
+:root {
+  --ep-font: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ep-font-size: 0.9375rem;
+
+  --ep-color-brand: #e5312e; /* ediarum red */
+  --ep-color-accent: #c8221f; /* brand red darkened for text/button contrast (≥ 4.5:1) */
+  --ep-color-accent-hover: #a81b19;
+  --ep-color-on-accent: #fff;
+  --ep-color-bg: #fff;
+  --ep-color-surface: #f7f7f8;
+  --ep-color-text: #1f2328;
+  --ep-color-muted: #5f6368;
+  --ep-color-border: #e1e3e6;
+  --ep-color-error: #b3261e;
+  --ep-color-error-bg: #fdecea;
+  --ep-color-success: #1e6b34;
+  --ep-color-success-bg: #e8f4ec;
+  --ep-color-focus: #1a5fb4;
+
+  --ep-space-1: 0.25rem;
+  --ep-space-2: 0.5rem;
+  --ep-space-3: 0.75rem;
+  --ep-space-4: 1rem;
+  --ep-space-6: 1.5rem;
+  --ep-space-8: 2rem;
+  --ep-radius: 6px;
+  --ep-topbar-height: 3.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ep-color-brand: #f0524f;
+    --ep-color-accent: #f0524f;
+    --ep-color-accent-hover: #f4726f;
+    --ep-color-on-accent: #1a1a1a;
+    --ep-color-bg: #18191b;
+    --ep-color-surface: #222326;
+    --ep-color-text: #e6e6e6;
+    --ep-color-muted: #a3a6ab;
+    --ep-color-border: #36383c;
+    --ep-color-error: #ffb4ab;
+    --ep-color-error-bg: #3b1714;
+    --ep-color-success: #8fd19e;
+    --ep-color-success-bg: #15301e;
+    --ep-color-focus: #8ab4f8;
+  }
+}
+
+/* Height chain: the content area fills the viewport below the top bar. */
+html,
+body,
+#ediarum-platform {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ep-color-bg);
+  color: var(--ep-color-text);
+}
+
+#ediarum-platform {
+  font-family: var(--ep-font);
+  font-size: var(--ep-font-size);
+  line-height: 1.5;
+}
+
+/*
+ * Shared building blocks of the platform's own pages. Every selector is an .ep- class, so none
+ * of this reaches into mounted apps.
+ */
+.ep-page {
+  max-width: 40rem;
+  padding: var(--ep-space-8) var(--ep-space-6);
+}
+
+.ep-page h1 {
+  margin: 0 0 var(--ep-space-6);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.ep-page h2 {
+  margin: var(--ep-space-8) 0 var(--ep-space-4);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.ep-page a {
+  color: var(--ep-color-accent);
+}
+
+.ep-form {
+  display: grid;
+  gap: var(--ep-space-4);
+  max-width: 24rem;
+}
+
+.ep-field {
+  display: grid;
+  gap: var(--ep-space-1);
+}
+
+.ep-field label {
+  font-weight: 500;
+}
+
+.ep-input {
+  font: inherit;
+  padding: var(--ep-space-2) var(--ep-space-3);
+  border: 1px solid var(--ep-color-border);
+  border-radius: var(--ep-radius);
+  background: var(--ep-color-bg);
+  color: var(--ep-color-text);
+}
+
+.ep-input[aria-invalid='true'] {
+  border-color: var(--ep-color-error);
+}
+
+.ep-field-error {
+  margin: 0;
+  color: var(--ep-color-error);
+  font-size: 0.875rem;
+}
+
+.ep-button {
+  justify-self: start;
+  font: inherit;
+  font-weight: 500;
+  padding: var(--ep-space-2) var(--ep-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--ep-radius);
+  background: var(--ep-color-accent);
+  color: var(--ep-color-on-accent);
+  cursor: pointer;
+}
+
+.ep-button:hover:not(:disabled) {
+  background: var(--ep-color-accent-hover);
+}
+
+.ep-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.ep-alert {
+  margin: 0;
+  padding: var(--ep-space-3) var(--ep-space-4);
+  border-radius: var(--ep-radius);
+  background: var(--ep-color-error-bg);
+  color: var(--ep-color-error);
+}
+
+.ep-alert--success {
+  background: var(--ep-color-success-bg);
+  color: var(--ep-color-success);
+}
+
+.ep-page :focus-visible,
+.ep-topbar :focus-visible,
+.ep-button:focus-visible,
+.ep-skip-link:focus-visible {
+  outline: 2px solid var(--ep-color-focus);
+  outline-offset: 2px;
+}

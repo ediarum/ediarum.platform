@@ -1,0 +1,31 @@
+# The whole ediarum.platform stack on one machine: platform, ediarum.webdav and a reverse proxy
+# in front of both. For the public version and workshops. A deployment with its own reverse
+# proxy only needs the platform image (or dist/); see the README.
+#
+# Variables: .env (see .env.example); webdav's go in env/webdav.env (template: ediarum.webdav's
+# .env.example, see its documentation/DEPLOYMENT.md).
+
+name: ediarum-platform
+
+include:
+  - path: ${WEBDAV_COMPOSE:?WEBDAV_COMPOSE is required (webdav's compose.yaml, pinned to a release tag)}
+    env_file: ./env/webdav.env
+
+services:
+  platform:
+    build: .
+    image: ediarum-platform:${PLATFORM_VERSION:-dev}
+    restart: unless-stopped
+
+  # The only published port. TLS, if any, is terminated in front of it.
+  proxy:
+    image: nginx:1.29-alpine
+    restart: unless-stopped
+    ports:
+      - "${PROXY_PORT:-8080}:80"
+    volumes:
+      - ./docker/proxy.conf:/etc/nginx/conf.d/default.conf:ro
+    # nginx resolves the upstream hosts at startup.
+    depends_on:
+      - platform
+      - webdav
